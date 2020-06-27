@@ -28,12 +28,19 @@ jobs:
          git clone  https://github.com/shadowsocksrr/shadowsocksr-libev openwrt-ssr-3.3.4
          tar zcf openwrt-ssr-3.3.4.tgz  openwrt-ssr-3.3.4
          
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
-      with:
-          args: "openwrt-ssr-3.3.4.tgz application/zip"
+    - name: Upload the artifacts
+      uses: skx/github-action-publish-binaries@master
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          args: 'openwrt-ssr-3.3.4.tgz' 
+     
+#    - name: Upload to release
+#      uses: JasonEtco/upload-to-release@master
+#      with:
+#          args: "openwrt-ssr-3.3.4.tgz application/zip"
+#      env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
 
 
         
