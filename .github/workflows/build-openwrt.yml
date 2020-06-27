@@ -35,7 +35,12 @@ jobs:
         echo "set-output name=status::4"
         git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
         echo "set-output name=status::5"
-        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+  
+  - name: make menuconfig 
+      uses: P3TERX/debugger-action@master
+      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+
+  - name: start build
         echo "set-output name=status::6"
         make package/shadowsocks-libev/compile V=99
         echo "set-output name=status::7"
