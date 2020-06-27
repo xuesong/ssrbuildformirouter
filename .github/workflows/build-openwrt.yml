@@ -37,7 +37,7 @@ jobs:
         echo "set-output name=status::5"
   
   - name: make menuconfig 
-      uses: P3TERX/debugger-action@master
+      uses: xuesong/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
   - name: start build
