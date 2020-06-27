@@ -33,23 +33,10 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: openwrt-ssr-3.3.4.tgz
-        asset_name: mything
+        asset_name: release.tgz
         tag: ${{ github.ref }}
         overwrite: true   
-   #
-   # - name: Upload the artifacts
-   #   uses: skx/github-action-publish-binaries@master
-   #   env:
-   #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-   #   with:
-   #       args: 'openwrt-ssr-3.3.4.tgz' 
-     
-#    - name: Upload to release
-#      uses: JasonEtco/upload-to-release@master
-#      with:
-#          args: "openwrt-ssr-3.3.4.tgz application/zip"
-#      env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+   
 
 
         
