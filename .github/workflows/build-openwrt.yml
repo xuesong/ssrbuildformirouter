@@ -11,6 +11,9 @@ on:
   watch:
     types: started
 
+env:
+  SSH_ACTIONS: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,7 +35,7 @@ jobs:
         echo "set-output name=status::4"
         git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
         echo "set-output name=status::5"
-        contains(github.event.action, 'ssh')
+        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
         echo "set-output name=status::6"
         make package/shadowsocks-libev/compile V=99
         echo "set-output name=status::7"
