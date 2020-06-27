@@ -32,7 +32,8 @@ jobs:
       uses: JasonEtco/upload-to-release@master
       with:
           args: openwrt-ssr-3.3.4.tar.gz application/
-        
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
 
 
         
