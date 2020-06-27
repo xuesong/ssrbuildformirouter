@@ -23,10 +23,17 @@ jobs:
     - name: Initialization environment
       run: |
         wget https://archive.openwrt.org/snapshots/trunk/ramips/mt7621/OpenWrt-SDK-ramips-mt7621_gcc-5.3.0_musl-1.1.16.Linux-x86_64.tar.bz2
+        echo "::set-output name=status::1"
         tar jxf OpenWrt-SDK-ramips-mt7621_gcc-5.3.0_musl-1.1.16.Linux-x86_64.tar.bz2
+        echo "::set-output name=status::2"
         cd OpenWrt-SDK-*
+        echo "::set-output name=status::3"
         git clone https://github.com/shadowsocks/openwrt-feeds.git package/feeds
+        echo "::set-output name=status::4"
         git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
+        echo "::set-output name=status::5"
         contains(github.event.action, 'ssh')
+        echo "::set-output name=status::6"
         make package/shadowsocks-libev/compile V=99
+        echo "::set-output name=status::7"
         
